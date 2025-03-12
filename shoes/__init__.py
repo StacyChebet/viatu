@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from . import auth
 
 
 def create_app(test_config=None):
@@ -25,8 +26,10 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    # @app.route('/hello')
+    # def hello():
+    #     return 'Hello, World!'
 
+    #Registering the blueprint
+    app.register_blueprint(auth.bp)
     return app
